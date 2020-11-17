@@ -8,4 +8,10 @@ from .models import Todo
 
 class TodoView(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+    # queryset = Todo.objects.all()
+    # s.p) request로 todos에 context정보까지 오니까 get_queryset으로 대체??
+    def get_queryset(self):
+        return self.request.user.todos.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
