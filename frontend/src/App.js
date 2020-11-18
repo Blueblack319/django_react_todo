@@ -19,11 +19,13 @@ function App() {
           <Button>Incomplete</Button>
         </Space>
         <Divider />
-        <Switch>
-          <Route path='/signup' component={Signup} />
-          <Route path='/login' component={Login} />
-          <Route path='/' component={Home} />
-        </Switch>
+        <div className='app__content'>
+          <Switch>
+            <Route path='/signup' component={Signup} />
+            <Route path='/login' component={Login} />
+            <Route path='/' component={Home} />
+          </Switch>
+        </div>
       </div>
     </div>
   );
