@@ -3,13 +3,12 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-import './Login.scss';
-
 const layout = {
   labelCol: {
     span: 8,
   },
   wrapperCol: {
+    offset: 4,
     span: 16,
   },
 };
@@ -30,7 +29,8 @@ const Login = () => {
         initialValues={{
           remember: true,
         }}
-        onFinish={handleOnFinished}>
+        onFinish={handleOnFinished}
+        onFinishFailed={handleOnFinishFailed}>
         <Form.Item
           {...layout}
           name='username'
@@ -60,29 +60,26 @@ const Login = () => {
             placeholder='Password'
           />
         </Form.Item>
-        <div className='form__footer'>
-          <Form.Item>
-            <Form.Item name='remember' valuePropName='checked' noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
 
-            <a
-              className='login-form-forgot'
-              href='https://github.com/crazybirdz'>
-              Forgot password
-            </a>
+        <Form.Item {...layout}>
+          <Form.Item name='remember' valuePropName='checked' noStyle>
+            <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <Form.Item>
-            <Button
-              type='primary'
-              htmlType='submit'
-              className='login-form-button'>
-              Log in
-            </Button>{' '}
-            Or <Link to='/signup'>register now!</Link>
-          </Form.Item>
-        </div>
+          <a className='login-form-forgot' href='https://github.com/crazybirdz'>
+            Forgot password
+          </a>
+        </Form.Item>
+
+        <Form.Item {...layout}>
+          <Button
+            type='primary'
+            htmlType='submit'
+            className='login-form-button'>
+            Log in
+          </Button>{' '}
+          Or <Link to='/signup'>register now!</Link>
+        </Form.Item>
       </Form>
     </div>
   );

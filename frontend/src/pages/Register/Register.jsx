@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button, Space, Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
-const Signup = () => {
+const Register = () => {
   const handleOnFinished = (values) => {
     console.log('Success: ', values);
   };
@@ -18,10 +18,10 @@ const Signup = () => {
   };
 
   return (
-    <div className='signup'>
+    <div className='register'>
       <Form
         layout='vertical'
-        name='signup'
+        name='register'
         onFinish={handleOnFinished}
         onFinishFailed={handleOnFinishFailed}
         scrollToFirstError>
@@ -129,4 +129,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
