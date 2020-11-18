@@ -5,6 +5,13 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 const Register = () => {
   const handleOnFinished = (values) => {
     console.log('Success: ', values);
+    axios({
+      method: 'post',
+      url: '/api/auth/register/',
+      data: values,
+    }).then((res) => {
+      return;
+    });
   };
 
   const handleOnFinishFailed = (errorInfo) => {
