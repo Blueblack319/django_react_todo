@@ -7,6 +7,7 @@ const CustomModal = ({ visible, type, onBack, onAdd, onEdit }) => {
       <Modal
         visible={visible}
         title='Add Todo'
+        onCancel={onBack}
         footer={[
           <Button key='back' onClick={onBack}>
             Return
@@ -24,6 +25,7 @@ const CustomModal = ({ visible, type, onBack, onAdd, onEdit }) => {
       <Modal
         visible={visible}
         title='Edit Todo'
+        onCancel={onBack}
         footer={[
           <Button key='back' onClick={onBack}>
             Return
