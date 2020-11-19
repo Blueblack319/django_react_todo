@@ -17,8 +17,7 @@ const layout = {
   },
 };
 
-const Login = (props) => {
-  const { isAuthenticated, login } = props;
+const Login = ({ isAuthenticated, login }) => {
   const handleOnFinished = (values) => {
     login(values);
   };

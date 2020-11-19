@@ -1,0 +1,18 @@
+.header__top {
+  display: flex;
+  margin: 0 20px;
+  padding-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__links {
+  a:not(:last-of-type) {
+    margin-right: 20px;
+  }
+}
+
+.header__completeBtns {
+  margin-top: 15px;
+  margin-left: 20px;
+}

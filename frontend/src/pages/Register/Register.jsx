@@ -1,18 +1,17 @@
 import React from 'react';
 import { Form, Input, Button, Space, Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-const Register = () => {
+import { register } from '../../store/actions/auth';
+
+const Register = ({ isAuthenticated, register }) => {
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
   const handleOnFinished = (values) => {
-    console.log('Success: ', values);
-    axios({
-      method: 'post',
-      url: '/api/auth/register/',
-      data: values,
-    }).then((res) => {
-      return console.log(res);
-    });
+    register(values);
   };
 
   const handleOnFinishFailed = (errorInfo) => {
@@ -36,7 +35,7 @@ const Register = () => {
         <Space>
           <Form.Item
             label='First Name'
-            name='firstname'
+            name='first_name'
             rules={[
               {
                 required: true,
@@ -47,7 +46,7 @@ const Register = () => {
           </Form.Item>
           <Form.Item
             label='Last Name'
-            name='lastname'
+            name='last_name'
             rules={[
               {
                 required: true,
@@ -137,4 +136,8 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { register })(Register);

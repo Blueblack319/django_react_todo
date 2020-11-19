@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-backend';
 // import { formValues } from 'redux-form';
 
 import { tokenConfig } from './auth';

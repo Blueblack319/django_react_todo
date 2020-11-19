@@ -1,6 +1,6 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import { Button, Space, Divider } from 'antd';
+import { Switch, Route } from 'react-router-dom';
+import { Divider } from 'antd';
 import { Provider } from 'react-redux';
 
 import './App.scss';
@@ -8,6 +8,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import PrivateRoute from './shared/PrivateRoute';
 import Register from './pages/Register/Register';
+import Header from './components/Header/Header';
 import store from './store';
 
 function App() {
@@ -15,14 +16,7 @@ function App() {
     <Provider store={store}>
       <div className='app'>
         <div className='app__container'>
-          <div className='app__todoListControls'>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Sign up</Link>
-          </div>
-          <Space className='app__completeBtns'>
-            <Button>Complete</Button>
-            <Button>Incomplete</Button>
-          </Space>
+          <Header />
           <Divider />
           <div className='app__content'>
             <Switch>
