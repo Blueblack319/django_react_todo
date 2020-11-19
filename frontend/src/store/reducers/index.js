@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 
 import auth from './auth';
+import todos from './todos';
 import { LOGOUT_SUCCESS } from '../actions/types';
-// import todos from './todos'
 
 const appReducer = combineReducers({
   auth,
+  todos,
 });
 
 const rootReducer = (state, action) => {

@@ -2,11 +2,19 @@ import axios from '../../axios-backend';
 // import { formValues } from 'redux-form';
 
 import { tokenConfig } from './auth';
+import { GET_TODOS } from './types';
 
 // GET TODOS
 export const getTodos = () => async (dispatch, getState) => {
-  const res = await axios.get('/api/todos/', tokenConfig(getState));
-  console.log(res);
+  try {
+    const res = await axios.get('/api/todos/', tokenConfig(getState));
+    dispatch({
+      type: GET_TODOS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
   // ...
 };
 

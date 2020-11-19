@@ -1,6 +1,5 @@
 import React from 'react';
 import { Space, Button, Typography } from 'antd';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../store/actions/auth';
 
@@ -15,11 +14,17 @@ const Header = ({ isAuthenticated, logout }) => {
         <Title level={3}>Todo CRUD</Title>
         <div className='header__links'>
           {isAuthenticated ? (
-            <Link onClick={logout}>Logout</Link>
+            <Button type='link' onClick={logout}>
+              Logout
+            </Button>
           ) : (
             <>
-              <Link to='/login'>Login</Link>
-              <Link to='/register'>Sign up</Link>
+              <Button type='link' to='/login'>
+                Login
+              </Button>
+              <Button type='link' to='/register'>
+                Sign up
+              </Button>
             </>
           )}
         </div>

@@ -1,2 +1,17 @@
 .home {
+  width: 100%;
+  .ant-divider-horizontal {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+.home__todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .todo__title {
+    height: 35px;
+    line-height: 35px;
+  }
 }
