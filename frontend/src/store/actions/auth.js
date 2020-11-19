@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-backend';
 import { stopSubmit } from 'redux-form';
 
 import {
@@ -7,6 +7,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT_SUCCESS,
 } from './types';
 
 export const tokenConfig = (getState) => {
@@ -67,4 +68,16 @@ export const login = ({ username, password }) => async (dispatch) => {
     });
     dispatch(stopSubmit('loginForm', err.response.data));
   }
+};
+
+// LOGOUT USER
+export const logout = () => async (dispatch, getState) => {
+  await axios({
+    method: 'POST',
+    url: '/api/auth/logout',
+    ...tokenConfig(getState),
+  });
+  dispatch({
+    type: LOGOUT_SUCCESS,
+  });
 };

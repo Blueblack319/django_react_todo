@@ -1,17 +1,19 @@
 import axios from 'axios';
-import { formValues } from 'redux-form';
+// import { formValues } from 'redux-form';
 
 import { tokenConfig } from './auth';
 
 // GET TODOS
 export const getTodos = () => async (dispatch, getState) => {
   const res = await axios.get('/api/todos/', tokenConfig(getState));
+  console.log(res);
   // ...
 };
 
 // GET TODO
 export const getTodo = (id) => async (dispatch, getState) => {
   const res = await axios.get(`/api/todos/${id}/`, tokenConfig(getState));
+  console.log(res);
   // ...
 };
 
@@ -22,6 +24,7 @@ export const addTodo = (formValues) => async (dispatch, getState) => {
     { ...formValues },
     tokenConfig(getState),
   );
+  console.log(res);
   // ...
 };
 
@@ -38,5 +41,6 @@ export const editTodo = (id, formValues) => async (dispatch, getState) => {
     formValues,
     tokenConfig(getState),
   );
+  console.log(res);
   // ...
 };

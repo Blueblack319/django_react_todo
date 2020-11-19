@@ -11,7 +11,7 @@ const Register = () => {
       url: '/api/auth/register/',
       data: values,
     }).then((res) => {
-      return;
+      return console.log(res);
     });
   };
 

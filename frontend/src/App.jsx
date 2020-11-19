@@ -1,12 +1,14 @@
+import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { Button, Space, Divider } from 'antd';
 import { Provider } from 'react-redux';
 
 import './App.scss';
-import store from './store';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import PrivateRoute from './shared/PrivateRoute';
 import Register from './pages/Register/Register';
+import store from './store';
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
             <Switch>
               <Route path='/register' component={Register} />
               <Route path='/login' component={Login} />
-              <Route path='/' component={Home} />
+              <PrivateRoute path='/' component={Home} />
             </Switch>
           </div>
         </div>

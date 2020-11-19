@@ -1,7 +1,11 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { login } from '../../store/actions/auth';
+// import { reduxForm } from 'redux-form';
 
 const layout = {
   labelCol: {
@@ -13,18 +17,23 @@ const layout = {
   },
 };
 
-const Login = () => {
-  const handleOnFinished = () => {
-    // Pop up Modal
+const Login = (props) => {
+  const { isAuthenticated, login } = props;
+  const handleOnFinished = (values) => {
+    login(values);
   };
   const handleOnFinishFailed = () => {
     // Pop up Modal
   };
 
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
+
   return (
     <div className='login'>
       <Form
-        name='login'
+        name='loginForm'
         className='login__form'
         initialValues={{
           remember: true,
@@ -85,4 +94,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
