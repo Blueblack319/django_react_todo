@@ -18,16 +18,16 @@ const layout = {
 };
 
 const Login = ({ isAuthenticated, login }) => {
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
+
   const handleOnFinished = (values) => {
     login(values);
   };
   const handleOnFinishFailed = () => {
     // Pop up Modal
   };
-
-  if (isAuthenticated) {
-    return <Redirect to='/' />;
-  }
 
   return (
     <div className='login'>

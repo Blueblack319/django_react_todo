@@ -110,13 +110,13 @@ export const register = ({
   });
 
   try {
-    const res = await axios.post('/api/auth/register', body, config);
-    // const res = await axios({
-    //   method: 'Post',
-    //   url: '/api/auth/register',
-    //   data: body,
-    //   ...config,
-    // });
+    // const res = await axios.post('/api/auth/register', body, config);
+    const res = await axios({
+      method: 'Post',
+      url: '/api/auth/register',
+      data: body,
+      ...config,
+    });
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
